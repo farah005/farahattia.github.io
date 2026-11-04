@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Farah Attia – Étudiante ingénieure en informatique, ENIT</title>
+<meta name="description" content="Portfolio de Farah Attia, étudiante ingénieure en informatique à l’ENIT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { ink: '#101B24', paper: '#F4F6F7', brand: '#0B4F6C', mist: '#DCE9EE', sun: '#F2A900' },
+    fontFamily: { display: ['"Bricolage Grotesque"', 'sans-serif'], body: ['"Public Sans"', 'sans-serif'] }
+  } }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid #F2A900; outline-offset: 3px; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .rise { animation: rise .7s ease-out both; }
+  .rise-2 { animation-delay: .15s; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .rise { animation: none; } }
+</style>
+</head>
+<body class="bg-paper text-ink font-body antialiased">
+
+<header class="sticky top-0 z-30 bg-paper/90 backdrop-blur border-b border-ink/10">
+  <nav class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between" aria-label="Navigation">
+    <a href="#top" class="font-display font-bold text-lg">Farah Attia</a>
+    <ul class="hidden md:flex gap-8 text-sm font-medium">
+      <li><a class="hover:text-brand" href="#apropos" data-i18n="navAbout">À propos</a></li>
+      <li><a class="hover:text-brand" href="#experience" data-i18n="navExp">Expérience</a></li>
+      <li><a class="hover:text-brand" href="#projets" data-i18n="navProjects">Projets</a></li>
+      <li><a class="hover:text-brand" href="#competences" data-i18n="navSkills">Compétences</a></li>
+      <li><a class="hover:text-brand" href="#formation" data-i18n="navEdu">Formation</a></li>
+    </ul>
+    <div class="flex items-center gap-3">
+      <button id="langBtn" type="button" class="border-2 border-ink font-semibold text-sm px-3 py-1.5 rounded-md hover:bg-ink hover:text-white" aria-label="Switch language">EN</button>
+      <a href="#contact" class="hidden sm:inline-block bg-brand text-white text-sm font-semibold px-4 py-2 rounded-md hover:bg-ink" data-i18n="contactBtn">Me contacter</a>
+      <button id="menuBtn" class="md:hidden p-2" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </nav>
+  <ul id="mobileMenu" class="hidden md:hidden border-t border-ink/10 px-5 py-3 text-sm font-medium space-y-3 bg-paper">
+    <li><a href="#apropos" data-i18n="navAbout">À propos</a></li>
+    <li><a href="#experience" data-i18n="navExp">Expérience</a></li>
+    <li><a href="#projets" data-i18n="navProjects">Projets</a></li>
+    <li><a href="#competences" data-i18n="navSkills">Compétences</a></li>
+    <li><a href="#formation" data-i18n="navEdu">Formation</a></li>
+    <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+  </ul>
+</header>
+
+<main id="top">
+
+<section class="max-w-6xl mx-auto px-5 pt-14 pb-20 md:pt-20 grid md:grid-cols-[1fr_20rem] lg:grid-cols-[1fr_24rem] gap-12 items-end">
+  <div class="rise">
+    
+    <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.02] tracking-tight">Farah Attia</h1>
+    <p class="mt-6 text-xl sm:text-2xl max-w-xl leading-snug" data-i18n="tagline"></p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="#projets" class="bg-brand text-white font-semibold px-5 py-3 rounded-md hover:bg-ink" data-i18n="ctaProjects">Voir mes projets</a>
+      <a href="assets/Farah_Attia_CV.pdf" download class="border-2 border-ink font-semibold px-5 py-3 rounded-md hover:bg-ink hover:text-white" data-i18n="ctaCv">Télécharger mon CV</a>
+    </div>
+  </div>
+  <div class="rise rise-2 justify-self-center md:justify-self-end relative">
+    <div class="absolute -right-3 -bottom-3 w-full h-full bg-sun rounded-t-full" aria-hidden="true"></div>
+    <div class="relative w-64 sm:w-72 lg:w-80 aspect-[4/5] rounded-t-full overflow-hidden bg-brand">
+      <img id="photo" src="assets/photo.png" alt="Farah Attia" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[150%] max-w-none w-auto">
+    </div>
+  </div>
+</section>
+
+<section id="apropos" class="bg-white border-y border-ink/10">
+  <div class="max-w-6xl mx-auto px-5 py-16 grid md:grid-cols-[14rem_1fr] gap-6 md:gap-12">
+    <h2 class="font-display font-bold text-3xl" data-i18n="aboutTitle">À propos</h2>
+    <div class="max-w-2xl space-y-4 text-lg leading-relaxed">
+      <p data-i18n="about1"></p>
+      <p data-i18n="about2"></p>
+      <p data-i18n="about3"></p>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="max-w-6xl mx-auto px-5 py-16 grid md:grid-cols-[14rem_1fr] gap-6 md:gap-12">
+  <h2 class="font-display font-bold text-3xl" data-i18n="expTitle">Expérience</h2>
+  <div class="space-y-12 max-w-3xl">
+    <article class="border-l-4 border-brand pl-6">
+      <h3 class="font-display font-bold text-2xl" data-i18n="amenTitle"></h3>
+      <p class="mt-1 text-ink/70 font-medium" data-i18n="amenMeta"></p>
+      <ul class="mt-4 space-y-2 leading-relaxed list-disc pl-5 marker:text-brand">
+        <li data-i18n="amen1"></li><li data-i18n="amen2"></li><li data-i18n="amen3"></li><li data-i18n="amen4"></li>
+      </ul>
+      <div class="mt-4 flex flex-wrap gap-2 text-sm">
+        <span class="bg-mist px-2.5 py-1 rounded">Python</span><span class="bg-mist px-2.5 py-1 rounded">XGBoost</span><span class="bg-mist px-2.5 py-1 rounded">SHAP</span><span class="bg-mist px-2.5 py-1 rounded">FastAPI</span><span class="bg-mist px-2.5 py-1 rounded">Streamlit</span>
+      </div>
+      <a href="https://github.com/farah005/credit-risk" target="_blank" rel="noopener" class="inline-block mt-4 font-semibold text-brand underline underline-offset-4 hover:text-ink" data-i18n="viewCode">Voir le code sur GitHub</a>
+    </article>
+    <article class="border-l-4 border-ink/20 pl-6">
+      <h3 class="font-display font-bold text-2xl" data-i18n="telTitle"></h3>
+      <p class="mt-1 text-ink/70 font-medium">Tunisie Telecom</p>
+      <p class="mt-4 leading-relaxed" data-i18n="telDesc"></p>
+    </article>
+  </div>
+</section>
+
+<section id="projets" class="bg-white border-y border-ink/10">
+  <div class="max-w-6xl mx-auto px-5 py-16">
+    <h2 class="font-display font-bold text-3xl" data-i18n="projTitle">Projets</h2>
+    <p class="mt-3 text-lg max-w-2xl" data-i18n="projIntro"></p>
+    <div id="editPanel" class="hidden mt-8"></div>
+    <div id="projectList" class="mt-10 grid md:grid-cols-2 gap-x-12 gap-y-10"></div>
+  </div>
+</section>
+
+<section id="competences" class="max-w-6xl mx-auto px-5 py-16 grid md:grid-cols-[14rem_1fr] gap-6 md:gap-12">
+  <h2 class="font-display font-bold text-3xl" data-i18n="skillsTitle">Compétences</h2>
+  <dl id="skillList" class="max-w-3xl divide-y divide-ink/10"></dl>
+</section>
+
+<section id="formation" class="bg-white border-y border-ink/10">
+  <div class="max-w-6xl mx-auto px-5 py-16 grid md:grid-cols-[14rem_1fr] gap-6 md:gap-12">
+    <h2 class="font-display font-bold text-3xl" data-i18n="eduTitle">Formation</h2>
+    <div class="max-w-3xl space-y-10">
+      <ul class="space-y-5">
+        <li><p class="font-semibold text-lg" data-i18n="edu1"></p><p class="text-ink/70" data-i18n="edu1s"></p></li>
+        <li><p class="font-semibold text-lg" data-i18n="edu2"></p><p class="text-ink/70" data-i18n="edu2s"></p></li>
+        <li><p class="font-semibold text-lg" data-i18n="edu3"></p><p class="text-ink/70" data-i18n="edu3s"></p></li>
+      </ul>
+      <div>
+        <h3 class="font-display font-bold text-xl" data-i18n="certTitle">Certifications</h3>
+        <ul class="mt-3 space-y-2 list-disc pl-5 marker:text-brand"><li data-i18n="cert1"></li><li data-i18n="cert2"></li></ul>
+      </div>
+      <div>
+        <h3 class="font-display font-bold text-xl" data-i18n="assocTitle"></h3>
+        <p class="mt-3" data-i18n="assocText"></p>
+      </div>
+      <div>
+        <h3 class="font-display font-bold text-xl" data-i18n="langTitle"></h3>
+        <p class="mt-3" data-i18n="langText"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="bg-brand text-white">
+  <div class="max-w-6xl mx-auto px-5 py-16 grid md:grid-cols-[14rem_1fr] gap-6 md:gap-12">
+    <h2 class="font-display font-bold text-3xl" data-i18n="contactTitle">Contact</h2>
+    <div class="max-w-2xl">
+      <p class="text-xl leading-snug" data-i18n="contactText"></p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="mailto:farah.attia@etudiant-enit.utm.tn" class="bg-sun text-ink font-semibold px-5 py-3 rounded-md hover:bg-white" data-i18n="emailBtn">Envoyer un email</a>
+        <a href="https://www.linkedin.com/in/farah-attia-464b08337" target="_blank" rel="noopener" class="border-2 border-white font-semibold px-5 py-3 rounded-md hover:bg-white hover:text-brand">LinkedIn</a>
+        <a href="https://github.com/farah005" target="_blank" rel="noopener" class="border-2 border-white font-semibold px-5 py-3 rounded-md hover:bg-white hover:text-brand">GitHub</a>
+      </div>
+      <p class="mt-8 text-white/80">farah.attia@etudiant-enit.utm.tn<br><span data-i18n="location">Kélibia, Tunisie</span></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="bg-ink text-white/70 text-sm">
+  <div class="max-w-6xl mx-auto px-5 py-6 flex flex-wrap justify-between gap-2">
+    <p>© <span id="year"></span> Farah Attia</p>
+    <a href="#top" class="hover:text-white" data-i18n="backTop">Retour en haut</a>
+  </div>
+</footer>
+
+<script src="content.js"></script>
+<script src="projects.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
