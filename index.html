@@ -7,13 +7,13 @@
 <meta name="description" content="Portfolio de Farah Attia, étudiante ingénieure en informatique à l’ENIT.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
   theme: { extend: {
-    colors: { ink: '#101B24', paper: '#F4F6F7', brand: '#0B4F6C', mist: '#DCE9EE', sun: '#F2A900' },
-    fontFamily: { display: ['"Bricolage Grotesque"', 'sans-serif'], body: ['"Public Sans"', 'sans-serif'] }
+    colors: { ink: '#2F3640', paper: '#FFFFFF', brand: '#6B5CA5', mist: '#E6E2F3', sun: '#C9BEF0' },
+    fontFamily: { display: ['"Baloo Bhai 2"', 'sans-serif'], body: ['"Open Sans"', 'sans-serif'] }
   } }
 }
 </script>
@@ -24,65 +24,80 @@ tailwind.config = {
   .rise { animation: rise .7s ease-out both; }
   .rise-2 { animation-delay: .15s; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .rise { animation: none; } }
+  .hero { background: linear-gradient(180deg,#6B5CA5 0%,#B9B6D8 42%,#fff 100%); overflow: hidden; }
+  .spot { position: absolute; top: 0; width: 38rem; height: 38rem; max-width: 90vw; transform: translateX(-50%); pointer-events: none;
+          background: radial-gradient(ellipse at 50% 0, rgba(255,255,255,.55), rgba(255,255,255,0) 68%); }
+  .spot::before { content:""; position:absolute; top:0; left:50%; width:3.5rem; height:2.5rem; transform:translateX(-50%); background:#4a4478; border-radius:0 0 1.5rem 1.5rem; }
+  details > summary { list-style: none; } details > summary::-webkit-details-marker { display: none; }
+  details[open] > summary .chev { transform: rotate(180deg); }
 </style>
 </head>
 <body class="bg-paper text-ink font-body antialiased">
 
-<header class="sticky top-0 z-30 bg-paper/90 backdrop-blur border-b border-ink/10">
+<header class="absolute top-0 inset-x-0 z-30 text-white">
   <nav class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between" aria-label="Navigation">
     <a href="#top" class="font-display font-bold text-lg">Farah Attia</a>
     <ul class="hidden md:flex gap-8 text-sm font-medium">
-      <li><a class="hover:text-brand" href="#apropos" data-i18n="navAbout">À propos</a></li>
-      <li><a class="hover:text-brand" href="#experience" data-i18n="navExp">Expérience</a></li>
-      <li><a class="hover:text-brand" href="#projets" data-i18n="navProjects">Projets</a></li>
-      <li><a class="hover:text-brand" href="#competences" data-i18n="navSkills">Compétences</a></li>
-      <li><a class="hover:text-brand" href="#formation" data-i18n="navEdu">Formation</a></li>
+      <li><a class="hover:text-mist" href="#apropos" data-i18n="navAbout">À propos</a></li>
+      <li><a class="hover:text-mist" href="#experience" data-i18n="navExp">Expérience</a></li>
+      <li><a class="hover:text-mist" href="#projets" data-i18n="navProjects">Projets</a></li>
+      <li><a class="hover:text-mist" href="#competences" data-i18n="navSkills">Compétences</a></li>
+      <li><a class="hover:text-mist" href="#formation" data-i18n="navEdu">Formation</a></li>
+      <li><a class="hover:text-mist" href="#social" data-i18n="navSocial">Social life</a></li>
     </ul>
     <div class="flex items-center gap-3">
-      <button id="langBtn" type="button" class="border-2 border-ink font-semibold text-sm px-3 py-1.5 rounded-md hover:bg-ink hover:text-white" aria-label="Switch language">EN</button>
-      <a href="#contact" class="hidden sm:inline-block bg-brand text-white text-sm font-semibold px-4 py-2 rounded-md hover:bg-ink" data-i18n="contactBtn">Me contacter</a>
+      <button id="langBtn" type="button" class="border-2 border-white font-semibold text-sm px-3 py-1.5 rounded-md hover:bg-white hover:text-brand" aria-label="Switch language">EN</button>
+      <a href="#contact" class="hidden sm:inline-block bg-white text-brand text-sm font-semibold px-4 py-2 hover:bg-mist" data-i18n="contactBtn">Me contacter</a>
       <button id="menuBtn" class="md:hidden p-2" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
   </nav>
-  <ul id="mobileMenu" class="hidden md:hidden border-t border-ink/10 px-5 py-3 text-sm font-medium space-y-3 bg-paper">
+  <ul id="mobileMenu" class="hidden md:hidden border-t border-ink/10 px-5 py-3 text-sm font-medium space-y-3 bg-brand">
     <li><a href="#apropos" data-i18n="navAbout">À propos</a></li>
     <li><a href="#experience" data-i18n="navExp">Expérience</a></li>
     <li><a href="#projets" data-i18n="navProjects">Projets</a></li>
     <li><a href="#competences" data-i18n="navSkills">Compétences</a></li>
     <li><a href="#formation" data-i18n="navEdu">Formation</a></li>
+    <li><a href="#social" data-i18n="navSocial">Social life</a></li>
     <li><a href="#contact" data-i18n="navContact">Contact</a></li>
   </ul>
 </header>
 
 <main id="top">
 
-<section class="max-w-6xl mx-auto px-5 pt-14 pb-20 md:pt-20 grid md:grid-cols-[1fr_20rem] lg:grid-cols-[1fr_24rem] gap-12 items-end">
-  <div class="rise">
-    
-    <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.02] tracking-tight">Farah Attia</h1>
-    <p class="mt-6 text-xl sm:text-2xl max-w-xl leading-snug" data-i18n="tagline"></p>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a href="#projets" class="bg-brand text-white font-semibold px-5 py-3 rounded-md hover:bg-ink" data-i18n="ctaProjects">Voir mes projets</a>
-      <a href="assets/Farah_Attia_CV.pdf" download class="border-2 border-ink font-semibold px-5 py-3 rounded-md hover:bg-ink hover:text-white" data-i18n="ctaCv">Télécharger mon CV</a>
-    </div>
-  </div>
-  <div class="rise rise-2 justify-self-center md:justify-self-end relative">
-    <div class="absolute -right-3 -bottom-3 w-full h-full bg-sun rounded-t-full" aria-hidden="true"></div>
-    <div class="relative w-64 sm:w-72 lg:w-80 aspect-[4/5] rounded-t-full overflow-hidden bg-brand">
-      <img id="photo" src="assets/photo.png" alt="Farah Attia" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[150%] max-w-none w-auto">
+<section class="hero relative min-h-screen flex items-center">
+  <div class="spot" style="left:12%" aria-hidden="true"></div>
+  <div class="spot" style="left:50%" aria-hidden="true"></div>
+  <div class="spot" style="left:88%" aria-hidden="true"></div>
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-5 pt-24 pb-16">
+    <div class="max-w-xl md:ml-[12%] rise">
+      <p class="font-display font-extrabold text-5xl text-ink/70" data-i18n="hi">Bonjour !</p>
+      <h1 class="font-display font-extrabold text-6xl sm:text-7xl text-ink leading-[1.05] mt-2">Farah Attia</h1>
+      <p class="mt-4 text-lg sm:text-xl font-light tracking-[.25em] uppercase text-ink/80" data-i18n="roleLine"></p>
+      <p class="mt-6 text-lg max-w-lg leading-relaxed text-ink/80" data-i18n="tagline"></p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#projets" class="bg-brand text-white px-6 py-3 rounded-full hover:bg-ink" data-i18n="ctaProjects">Voir mes projets</a>
+        <a href="assets/Farah_Attia_CV.pdf" download class="border border-brand text-brand px-6 py-3 rounded-full hover:bg-brand hover:text-white" data-i18n="ctaCv">Télécharger mon CV</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="apropos" class="bg-white border-y border-ink/10">
-  <div class="max-w-6xl mx-auto px-5 py-16 grid md:grid-cols-[14rem_1fr] gap-6 md:gap-12">
-    <h2 class="font-display font-bold text-3xl" data-i18n="aboutTitle">À propos</h2>
+<section id="apropos" class="bg-white">
+  <div class="max-w-6xl mx-auto px-5 py-20 grid md:grid-cols-[20rem_1fr] gap-12 items-center">
+    <div class="justify-self-center relative">
+      <div class="absolute -right-3 -bottom-3 w-full h-full bg-sun rounded-t-full" aria-hidden="true"></div>
+      <div class="relative w-64 sm:w-72 aspect-[4/5] rounded-t-full overflow-hidden bg-brand">
+        <img id="photo" src="assets/photo.png" alt="Farah Attia" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[150%] max-w-none w-auto">
+      </div>
+    </div>
     <div class="max-w-2xl space-y-4 text-lg leading-relaxed">
-      <p data-i18n="about1"></p>
-      <p data-i18n="about2"></p>
-      <p data-i18n="about3"></p>
+      <p class="text-ink/60" data-i18n="whoAmI">Qui suis-je ?</p>
+      <h2 class="font-display font-extrabold text-4xl text-brand" data-i18n="aboutTitle">À propos</h2>
+      <p data-i18n="about1"></p><p data-i18n="about2"></p><p data-i18n="about3"></p>
+      <p><span data-i18n="about4"></span> <a href="https://www.ticv.tn/" target="_blank" rel="noopener" class="font-semibold text-brand underline underline-offset-4 hover:text-ink">ticv.tn</a></p>
+      <a href="assets/Farah_Attia_CV.pdf" download class="inline-block border border-brand text-brand px-6 py-2.5 rounded-full hover:bg-brand hover:text-white" data-i18n="ctaCv">Télécharger mon CV</a>
     </div>
   </div>
 </section>
@@ -109,12 +124,12 @@ tailwind.config = {
   </div>
 </section>
 
-<section id="projets" class="bg-white border-y border-ink/10">
+<section id="projets" class="bg-mist/40 border-y border-ink/10">
   <div class="max-w-6xl mx-auto px-5 py-16">
     <h2 class="font-display font-bold text-3xl" data-i18n="projTitle">Projets</h2>
     <p class="mt-3 text-lg max-w-2xl" data-i18n="projIntro"></p>
     <div id="editPanel" class="hidden mt-8"></div>
-    <div id="projectList" class="mt-10 grid md:grid-cols-2 gap-x-12 gap-y-10"></div>
+    <div id="projectList" class="mt-10 grid gap-6"></div>
   </div>
 </section>
 
@@ -128,6 +143,7 @@ tailwind.config = {
     <h2 class="font-display font-bold text-3xl" data-i18n="eduTitle">Formation</h2>
     <div class="max-w-3xl space-y-10">
       <ul class="space-y-5">
+        <li><p class="font-semibold text-lg" data-i18n="eduM"></p><p class="text-ink/70" data-i18n="eduMs"></p></li>
         <li><p class="font-semibold text-lg" data-i18n="edu1"></p><p class="text-ink/70" data-i18n="edu1s"></p></li>
         <li><p class="font-semibold text-lg" data-i18n="edu2"></p><p class="text-ink/70" data-i18n="edu2s"></p></li>
         <li><p class="font-semibold text-lg" data-i18n="edu3"></p><p class="text-ink/70" data-i18n="edu3s"></p></li>
@@ -145,6 +161,14 @@ tailwind.config = {
         <p class="mt-3" data-i18n="langText"></p>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="social" class="bg-mist/40 border-y border-ink/10">
+  <div class="max-w-6xl mx-auto px-5 py-16">
+    <h2 class="font-display font-extrabold text-3xl text-brand" data-i18n="socialTitle">Social life</h2>
+    <p class="mt-3 text-lg max-w-2xl" data-i18n="socialIntro"></p>
+    <div id="socialList" class="mt-10 space-y-14"></div>
   </div>
 </section>
 

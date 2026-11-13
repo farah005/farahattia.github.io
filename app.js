@@ -17,16 +17,40 @@
   const saveDraft = () => { try { localStorage.setItem("draftProjects", JSON.stringify(projects)); } catch (e) {} };
 
   function renderProjects() {
-    $("#projectList").innerHTML = projects.map((p) => `
-      <article class="border-t-2 border-ink pt-5">
-        <h3 class="font-display font-bold text-xl leading-snug">${esc(tr(p.title))}</h3>
-        <p class="mt-2 leading-relaxed">${esc(tr(p.desc))}</p>
-        <div class="mt-3 flex flex-wrap gap-2 text-sm">${(p.tags || []).map((g) => `<span class="bg-mist px-2.5 py-1 rounded">${esc(g)}</span>`).join("")}</div>
-        ${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener" class="inline-block mt-4 font-semibold text-brand underline underline-offset-4 hover:text-ink">${esc(window.I18N[lang].viewCode)}</a>` : ""}
+    const t = window.I18N[lang];
+    $("#projectList").innerHTML = projects.map((p) => {
+      const d = (p.details && (p.details[lang] || p.details.fr)) || [];
+      const role = tr(p.role);
+      return `
+      <article class="bg-white rounded-2xl border border-ink/10 shadow-sm p-6">
+        <div class="flex flex-wrap items-center gap-3">
+          <h3 class="font-display font-extrabold text-2xl leading-snug text-brand">${esc(tr(p.title))}</h3>
+          ${p.status ? `<span class="text-xs font-semibold bg-brand text-white px-2.5 py-1 rounded-full">${esc(tr(p.status))}</span>` : ""}
+        </div>
+        ${role ? `<p class="mt-1 text-sm"><span class="font-semibold">${esc(t.roleLbl)}</span> ${esc(role)}</p>` : ""}
+        ${p.img ? `<img src="${esc(p.img)}" alt="" class="mt-4 rounded-lg w-full">` : ""}
+        <p class="mt-3 leading-relaxed">${esc(tr(p.desc))}</p>
+        ${d.length ? `<details class="mt-4"><summary class="cursor-pointer font-semibold text-brand inline-flex items-center gap-2">${esc(t.details)}<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <ul class="mt-3 space-y-2 list-disc pl-5 marker:text-brand leading-relaxed">${d.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></details>` : ""}
+        <div class="mt-4 flex flex-wrap gap-2 text-sm">${(p.tags || []).map((g) => `<span class="bg-mist px-2.5 py-1 rounded-full">${esc(g)}</span>`).join("")}</div>
+        ${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener" class="inline-block mt-4 font-semibold text-brand underline underline-offset-4 hover:text-ink">${esc(t.viewCode)}</a>` : ""}
         ${editMode ? `<div class="mt-4 flex gap-4 text-sm font-semibold">
           <button data-act="edit" data-id="${esc(p.id)}" class="underline underline-offset-4 hover:text-brand">Modifier</button>
           <button data-act="del" data-id="${esc(p.id)}" class="underline underline-offset-4 text-red-700 hover:text-red-900">Supprimer</button></div>` : ""}
-      </article>`).join("");
+      </article>`;
+    }).join("");
+  }
+
+  function renderSocial() {
+    $("#socialList").innerHTML = (window.SOCIAL || []).map((ev) => `
+      <div>
+        <h3 class="font-display font-extrabold text-2xl">${esc(tr(ev.title))}</h3>
+        <p class="mt-2 max-w-3xl leading-relaxed">${esc(tr(ev.text))}</p>
+        <div class="mt-5 grid gap-3 ${ev.photos.length === 2 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3"}">
+          ${ev.photos.map((ph) => `<a href="${esc(ph.src)}" target="_blank" rel="noopener" class="block rounded-xl overflow-hidden bg-white border border-ink/10">
+            <img loading="lazy" src="${esc(ph.src)}" alt="${esc(tr(ph.alt))}" class="w-full aspect-[3/2] ${ph.fit === "contain" ? "object-contain bg-ink/5" : "object-cover"} hover:scale-[1.02] transition-transform"></a>`).join("")}
+        </div>
+      </div>`).join("");
   }
 
   function renderSkills() {
@@ -48,6 +72,7 @@
     b.setAttribute("aria-label", t.langBtnLabel);
     renderProjects();
     renderSkills();
+    renderSocial();
   }
 
   $("#langBtn").addEventListener("click", () => {
@@ -93,6 +118,7 @@
       e.preventDefault();
       const tf = f("fTf").value.trim(), df = f("fDf").value.trim();
       const p = {
+        ...(projects.find((x) => x.id === editingId) || {}),
         id: editingId || "p" + Date.now(),
         title: { fr: tf, en: f("fTe").value.trim() || tf },
         desc: { fr: df, en: f("fDe").value.trim() || df },
