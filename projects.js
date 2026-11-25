@@ -134,6 +134,57 @@ window.PROJECTS = [
     "url": "https://github.com/F-ieee/EnergieMind"
   },
   {
+    "id": "argos",
+    "featured": true,
+    "title": {
+      "fr": "Argos : assistant de surveillance de classe (IEEE ENIT, TSYP14)",
+      "en": "Argos: classroom monitoring assistant (IEEE ENIT, TSYP14)"
+    },
+    "status": {
+      "fr": "Prototype",
+      "en": "Prototype"
+    },
+    "role": {
+      "fr": "",
+      "en": ""
+    },
+    "desc": {
+      "fr": "Assistant qui signale à l’enseignant trois comportements possibles en classe (usage de téléphone, tête baissée durablement, conflit physique). L’enseignant confirme ou rejette chaque alerte après un court extrait vidéo : l’IA ne décide jamais seule et n’identifie personne.",
+      "en": "Assistant that reports three possible classroom behaviours to the teacher (phone use, persistent head down, physical conflict). The teacher confirms or dismisses each alert after a short clip: the AI never decides alone and never identifies anyone."
+    },
+    "details": {
+      "fr": [
+        "Contexte : projet de l’équipe MissionX (IEEE ENIT) pour l’AOTN Challenge, TSYP 14.",
+        "Architecture : caméra → Raspberry Pi (YOLO11-Pose, ByteTrack, YOLO11 pour les téléphones) → serveur FastAPI + SQLite avec WebSocket → application Flutter (Android, iOS, navigateur).",
+        "Règles explicables « k images sur W » (par exemple téléphone : 10 sur 15), score = confiance moyenne × part d’images concernées, trois niveaux d’alerte.",
+        "Mesures normalisées par la largeur d’épaules de chaque élève, donc indépendantes de la distance à la caméra.",
+        "Seuil « tête baissée » calibré sur SCBehavior (400 images) : 82 % des têtes baissées détectées, 14 % de fausses alarmes.",
+        "Confidentialité : la vidéo reste dans le réseau de l’école, extraits supprimés au bout de 24 h ou dès le rejet, aucune reconnaissance faciale, accès par rôle et journal d’audit.",
+        "Installation en une commande sur Raspberry Pi et 60 tests automatisés (appareil, serveur, application, calibration).",
+        "Mesuré sur Raspberry Pi 4 : environ 1,1 image/s. Limites connues : lire ou écrire ressemble à une tête baissée, précision et rappel pas encore mesurés sur des vidéos réelles."
+      ],
+      "en": [
+        "Context: project by team MissionX (IEEE ENIT) for the AOTN Challenge, TSYP 14.",
+        "Architecture: camera → Raspberry Pi (YOLO11-Pose, ByteTrack, YOLO11 for phones) → FastAPI + SQLite server with WebSocket → Flutter app (Android, iOS, browser).",
+        "Explainable “k of W frames” rules (for example phone: 10 of 15), score = mean confidence × share of frames, three alert tiers.",
+        "Measurements normalised by each student’s shoulder width, so they do not depend on camera distance.",
+        "Head-down threshold calibrated on SCBehavior (400 images): 82% of heads down detected, 14% false alarms.",
+        "Privacy: video stays on the school network, clips deleted after 24 h or on dismissal, no face recognition, role-based access and audit log.",
+        "One-command install on Raspberry Pi and 60 automated tests (device, server, app, calibration).",
+        "Measured on a Raspberry Pi 4: about 1.1 frames/s. Known limits: reading or writing looks like head down, precision and recall not yet measured on real classroom videos."
+      ]
+    },
+    "tags": [
+      "Python",
+      "YOLO11",
+      "FastAPI",
+      "Flutter",
+      "Raspberry Pi",
+      "Computer vision"
+    ],
+    "url": "https://github.com/farah005/Argos"
+  },
+  {
     "id": "tnessnisa",
     "title": {
       "fr": "TNessnisa",
